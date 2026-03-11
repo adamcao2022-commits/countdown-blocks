@@ -1,0 +1,71 @@
+name: CountdownBlocks
+options:
+  bundleIdPrefix: com.countdownblocks
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "15.0"
+  
+settings:
+  SWIFT_VERSION: "5.9"
+  GENERATE_INFOPLIST_FILE: YES
+  
+targets:
+  CountdownBlocks:
+    type: application
+    platform: iOS
+    sources:
+      - CountdownBlocks
+    settings:
+      base:
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_NSRemindersUsageDescription: "Countdown Blocks shows your tasks during each time block."
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "Countdown Blocks uses your sleep data to automatically set your wake-up time."
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
+        CODE_SIGN_ENTITLEMENTS: CountdownBlocks/CountdownBlocks.entitlements
+    entitlements:
+      path: CountdownBlocks/CountdownBlocks.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.countdownblocks.shared
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access:
+          - health-records
+    dependencies:
+      - target: CountdownBlocksWidgetExtension
+        embed: true
+        
+  CountdownBlocksWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - CountdownBlocksWidget
+    settings:
+      base:
+        INFOPLIST_KEY_CFBundleDisplayName: "Countdown Widget"
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
+        CODE_SIGN_ENTITLEMENTS: CountdownBlocksWidget/CountdownBlocksWidget.entitlements
+    entitlements:
+      path: CountdownBlocksWidget/CountdownBlocksWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.countdownblocks.shared
+
+schemes:
+  CountdownBlocks:
+    build:
+      targets:
+        CountdownBlocks: all
+        CountdownBlocksWidgetExtension: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+    profile:
+      config: Release
+    archive:
+      config: Release
