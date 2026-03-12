@@ -31,11 +31,12 @@ targets:
         com.apple.developer.healthkit: true
         com.apple.developer.healthkit.access:
           - health-records
-    dependencies:
-      - target: CountdownBlocksWidgetExtension
-        embed: true
+    # Widget temporarily disabled - uncomment when fixed
+    # dependencies:
+    #   - target: CountdownBlocksWidgetExtension
+    #     embed: true
         
-  CountdownBlocksWidgetExtension:
+  CountdownBlocksWidgetExtensionDISABLED:
     type: app-extension
     platform: iOS
     sources:
@@ -59,7 +60,7 @@ schemes:
     build:
       targets:
         CountdownBlocks: all
-        CountdownBlocksWidgetExtension: all
+        # CountdownBlocksWidgetExtensionDISABLED: all
     run:
       config: Debug
     test:
