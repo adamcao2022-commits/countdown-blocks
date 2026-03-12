@@ -88,7 +88,7 @@ final class UserSettings {
         let bedtimeComponents = calendar.dateComponents([.hour, .minute], from: schedule.bedtimeTarget)
         let wakeComponents = calendar.dateComponents([.hour, .minute], from: schedule.wakeUpTime)
         
-        var bedtimeMinutes = (bedtimeComponents.hour ?? 22) * 60 + (bedtimeComponents.minute ?? 0)
+        let bedtimeMinutes = (bedtimeComponents.hour ?? 22) * 60 + (bedtimeComponents.minute ?? 0)
         var wakeMinutes = (wakeComponents.hour ?? 7) * 60 + (wakeComponents.minute ?? 0)
         
         // If wake time is earlier than bedtime, add 24 hours worth of minutes
