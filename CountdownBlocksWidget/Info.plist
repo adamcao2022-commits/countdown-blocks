@@ -27,10 +27,5 @@
 	</dict>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
-	<key>EXAppExtensionAttributes</key>
-	<dict>
-		<key>EXExtensionPointIdentifier</key>
-		<string>com.apple.widgetkit-extension</string>
-	</dict>
 </dict>
 </plist>
