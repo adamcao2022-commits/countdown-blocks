@@ -168,37 +168,7 @@ struct ScheduleSetupPage: View {
                 .foregroundStyle(.secondary)
             
             if let settings = countdownManager.settings {
-                VStack(spacing: 16) {
-                    ScheduleTimeRow(
-                        icon: "sunrise.fill",
-                        color: .orange,
-                        label: "Wake Up",
-                        time: $settings.wakeUpTime
-                    )
-                    
-                    ScheduleTimeRow(
-                        icon: "briefcase.fill",
-                        color: .blue,
-                        label: "Work Start",
-                        time: $settings.workStartTime
-                    )
-                    
-                    ScheduleTimeRow(
-                        icon: "briefcase",
-                        color: .blue,
-                        label: "Work End",
-                        time: $settings.workEndTime
-                    )
-                    
-                    ScheduleTimeRow(
-                        icon: "moon.fill",
-                        color: .indigo,
-                        label: "Bedtime",
-                        time: $settings.bedtimeTarget
-                    )
-                }
-                .padding()
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
+                ScheduleSetupContent(settings: settings)
             }
             
             Text("You can customize times per day later in Settings")
@@ -208,6 +178,44 @@ struct ScheduleSetupPage: View {
             Spacer()
         }
         .padding()
+    }
+}
+
+struct ScheduleSetupContent: View {
+    @Bindable var settings: UserSettings
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            ScheduleTimeRow(
+                icon: "sunrise.fill",
+                color: .orange,
+                label: "Wake Up",
+                time: $settings.wakeUpTime
+            )
+            
+            ScheduleTimeRow(
+                icon: "briefcase.fill",
+                color: .blue,
+                label: "Work Start",
+                time: $settings.workStartTime
+            )
+            
+            ScheduleTimeRow(
+                icon: "briefcase",
+                color: .blue,
+                label: "Work End",
+                time: $settings.workEndTime
+            )
+            
+            ScheduleTimeRow(
+                icon: "moon.fill",
+                color: .indigo,
+                label: "Bedtime",
+                time: $settings.bedtimeTarget
+            )
+        }
+        .padding()
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
     }
 }
 
