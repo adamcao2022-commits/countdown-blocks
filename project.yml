@@ -12,12 +12,14 @@ targets:
   CountdownBlocks:
     type: application
     platform: iOS
+    bundleIdPrefix: com.countdownblocks
     sources:
       - CountdownBlocks
     info:
       path: CountdownBlocks/Info.plist
     settings:
       base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.countdownblocks.CountdownBlocks
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
         CODE_SIGN_ENTITLEMENTS: CountdownBlocks/CountdownBlocks.entitlements
@@ -42,6 +44,7 @@ targets:
       path: CountdownBlocksWidget/Info.plist
     settings:
       base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.countdownblocks.CountdownBlocks.WidgetExtension
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
         CODE_SIGN_ENTITLEMENTS: CountdownBlocksWidget/CountdownBlocksWidget.entitlements
